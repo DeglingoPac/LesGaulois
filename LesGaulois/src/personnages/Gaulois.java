@@ -30,12 +30,15 @@ public class Gaulois {
 	public void frapper(Romain romain) {
 		String nomRomain = romain.getNom();
 		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + nomRomain);
-		int forceCoup = force / 3;
+		int forceCoup = force * effetPotion / 3;
+		if (effetPotion > 1) {
+			effetPotion = effetPotion - 1;
+		}
 		romain.recevoirCoup(forceCoup);
 	}
 	
-	public void boirePotion() {
-		
+	public void boirePotion(Chaudron chaudron) {
+		effetPotion = chaudron.getForcePotion();
 	}
 
 	public static void main(String[] args) {

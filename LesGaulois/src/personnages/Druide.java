@@ -21,11 +21,24 @@ public class Druide {
 		return "Le druide " + nom + " : ";
 	}
 	
-	public void booster(Gaulois gaulois) {
-		
+	public void booster(Gaulois gaulois, Chaudron chaudron) {
+		if (chaudron.resterPotion()) {
+			if (gaulois.getNom() == "Obélix") {
+				parler("Non " + gaulois.getNom() + " Non !... Tu le sais très bien !");
+			}
+			else {
+				chaudron.prendreLouche();
+				gaulois.boirePotion(chaudron);
+				parler("Tiens " + gaulois.getNom() + " un peu de potion magique.");				
+			}
+		}
+		else {
+			parler("Désolé " + gaulois.getNom() + "il n'y a plus une seule goutte de potion.");
+		}
 	}
 	
-	public void fabriquerPotion(int quatité, int forcePotion) {
-		
+	public void fabriquerPotion(int quantite, int forcePotion, Chaudron chaudron) {
+		chaudron.remplirChaudron(quantite, forcePotion);
+		parler("J'ai concoté " + quantite + " doses de potions magique. Elle a une force de " + forcePotion + ".");
 	}
 }
