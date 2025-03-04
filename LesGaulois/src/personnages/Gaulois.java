@@ -1,9 +1,13 @@
 package personnages;
 
+import lieux.Village;
+import objet.Chaudron;
+
 public class Gaulois {
 	private String nom;
 	private int force;
 	private int effetPotion = 1;
+	private boolean estChef = false;
 	
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -12,6 +16,10 @@ public class Gaulois {
 	
 	public String getNom() {
 		return nom;
+	}
+	
+	public void devientChef() {
+		estChef = true; 
 	}
 	
 	public void parler(String texte) {
@@ -24,7 +32,7 @@ public class Gaulois {
 		
 	@Override
 	public String toString() {
-		return "Gaulois [nom=" + nom + ", force=" + force + "]";
+		return nom;
 	}
 	
 	public void frapper(Romain romain) {
@@ -43,6 +51,9 @@ public class Gaulois {
 
 	public static void main(String[] args) {
 		Gaulois astérix = new Gaulois("Astérix", 8);
+	}
+	
+	public void setVillage(Village village) {
 		
 	}
 }
