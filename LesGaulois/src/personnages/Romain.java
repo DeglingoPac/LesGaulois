@@ -23,6 +23,8 @@ public class Romain {
 	}
 	
 	public void recevoirCoup(int forceCoup) {
+		assert forceCoup > 0;
+		int forceInitiale = force;
 		force = force - forceCoup;
 		assert isInvariantVerified();
 		if (force > 0) {
@@ -31,16 +33,15 @@ public class Romain {
 		else {
 			parler("J'abandonne");
 		}
+		assert forceInitiale > force;
 	}
 	
 	private boolean isInvariantVerified() {
-		if (force < 0) {
-			return false;
-		}
-		else {
-			return true;
-		}
+		return force > 0;
 	}
+	
+	
+	
 	public static void main(String[] args) {
 		Romain minus = new Romain("Minus", 6);
 	}
