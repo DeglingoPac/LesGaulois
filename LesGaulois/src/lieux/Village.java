@@ -9,15 +9,19 @@ public class Village {
 	private Gaulois chef;
 	
 	public Village(String nom,final int NB_VILLAGEOIS_MAX) {
-	super();
-	this.nom = nom;
-	villageois = new Gaulois[NB_VILLAGEOIS_MAX];
+		super();
+		this.nom = nom;
+		villageois = new Gaulois[NB_VILLAGEOIS_MAX];
 		
 	}
 	public String getNom() {
 		return nom;
 	}
 	
+	public Gaulois getChef() {
+		return chef;
+	}
+
 	public void afficherVillageois() {
 		System.out.println("Dans le village \"" + nom + "\" du chef " + chef + " vivent les légendaires gaulois :");
 		for (Gaulois gaulois : villageois) {
@@ -28,13 +32,14 @@ public class Village {
 	}	
 	
 	public void ajouterVillageois(Gaulois gaulois) {
+		gaulois.setVillage(this);
 		villageois[nbVillageois] = gaulois;
 		nbVillageois++;
 	}
 	
 	public void ajouterChef(Gaulois gaulois) {
 		chef = gaulois;
-		gaulois.devientChef();
+		gaulois.devientChef(this);
 	}
 	
 	public Gaulois trouverVillageois(int numVillageois) {
@@ -48,7 +53,7 @@ public class Village {
 	}
 	@Override
 	public String toString() {
-		return "Village [nom=" + nom + ", nbVillageois=" + nbVillageois + "]";
+		return nom;
 	}
 	public static void main(String[] args) {
 		Village village = new Village("Village des Irréductibles", 30);
@@ -59,5 +64,9 @@ public class Village {
 		village.ajouterVillageois(astérix);
 		village.ajouterVillageois(obélix);
 		village.afficherVillageois();
+		Gaulois doublePolemix = new Gaulois("DoublePolémix", 4);
+		abraracourcix.sePresenter();
+		astérix.sePresenter();
+		obélix.sePresenter();
 	}
 }

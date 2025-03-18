@@ -1,4 +1,4 @@
-package objet;
+package personnages;
 
 public enum Equipement {
 	CASQUE("casque"),BOUCLIER("bouclier");
@@ -13,6 +13,6 @@ public enum Equipement {
 	public String toString() {
 		return nom;
 	}
-	
-	
 }
+
+
